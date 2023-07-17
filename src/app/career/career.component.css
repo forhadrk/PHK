@@ -1,0 +1,20 @@
+.careerControls {
+    padding: 4rem;
+    margin: 1rem 6rem 0;
+    border: 1px solid #dee2e6;
+    background-color: rgba(73,201,230,.95);
+    color: #fff;
+    border-radius: 15px;
+}
+
+.form-label {
+    font-weight: 600;
+}
+
+.careerHeaderArea{
+    padding: 50px 15% 50px 15%;
+}
+
+.text-justify{
+    text-align: justify;
+}

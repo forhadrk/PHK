@@ -1,0 +1,47 @@
+.font-weight-bold{
+    font-weight: 600;
+}
+
+.contactFormArea {
+    padding: 2rem;
+    border: 1px solid #dee2e6;
+    background-color: rgba(73,201,230,.95);
+    color: #fff;
+    border-radius: 15px;
+}
+
+.social-list {
+    margin: 15px 0 15px;
+    padding: 0;
+    list-style: none;
+}
+
+.social-list>li {
+    display: inline-block;
+    margin-right: 35px;
+    margin-top: 0;
+}
+
+.social-list>li a {
+    font-size: 40px;
+    line-height: 40px;
+    text-decoration: none;
+    -webkit-transition: 0.2s;
+    -moz-transition: 0.2s;
+    -ms-transition: 0.2s;
+    -o-transition: 0.2s;
+}
+
+.marker-list{
+    list-style: none;
+}
+
+.marker-list>li i {
+    font-size: 25px;
+    line-height: 25px;
+    text-decoration: none;
+    -webkit-transition: 0.2s;
+    -moz-transition: 0.2s;
+    -ms-transition: 0.2s;
+    -o-transition: 0.2s;
+}

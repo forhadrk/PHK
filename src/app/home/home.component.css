@@ -1,0 +1,151 @@
+.carousel {
+    margin: 0 auto;
+  }
+  .carousel-indicators{
+    list-style: none;
+  }
+.divServicesSummary{
+    /* border: 1px solid #ddd; */
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.imgHome{
+    width: 90%;
+}
+
+.divServicesSummary h3{
+    font-size: 1.2rem !important;
+    font-weight: 600 !important;
+}
+
+.divServicesSummary a{
+    text-decoration: none !important;
+}
+
+.how-works {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.how-works-number {
+    display: inline-block;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background-color: #6fbf52;
+    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    font-size: 40px;
+    line-height: 110px;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+}
+
+.how-works-number--color1 {
+    background-color: #7bd6c5;
+}
+
+.how-works .how-works-title,
+.text-h3-size h3 {
+    font-size: 24px;
+}
+
+.how-works p {
+    font-size: 15px;
+    line-height: 24px;
+}
+
+.testimonial{
+    background-image: linear-gradient(90deg, #46c6cf, #47a8e3);
+    padding: 37px 25px;
+    text-align: center;
+    font-size: 36px;
+    line-height: 36px;
+    color: #fff;
+    margin-bottom: 4rem;
+}
+
+.get-banner {
+    color: #fff;
+    padding: 3px 0;
+}
+.text-center {
+    text-align: center;
+}
+
+.btn, .more-link {
+    padding: 15px 29px;
+    font-size: 17px;
+    line-height: 28px;
+    font-weight: 600;
+    height: auto;
+    background-color: #4ba0e8;
+    color: #fff;
+    border-radius: 27.5px;
+    border: 0;
+    vertical-align: top;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -o-transition: 0.5s;
+    text-decoration: none;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-white, .btn-white.focus, .btn-white:focus {
+    background: #fff;
+    color: #425d74;
+}
+
+.how-works-title{
+    margin-top: 2rem;
+}
+
+.gallery-title
+{
+    margin-top: 70px;
+    font-size: 36px;
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 70px;
+}
+.gallery-title:after {
+    content: "";
+    position: absolute;
+    width: 7.5%;
+    left: 46.5%;
+    height: 45px;
+}
+.filter-button
+{
+    font-size: 18px;
+    border-radius: 0px;
+    text-align: center;
+    margin-bottom: 30px;
+    border-right: 1px solid #fff;
+}
+.filter-button:hover
+{
+    font-size: 18px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+    color: #ffffff;
+    background-color: #dedede;
+
+}
+
+.port-image
+{
+    width: 100%;
+}
+
+.gallery_product
+{
+    margin-bottom: 30px;
+}

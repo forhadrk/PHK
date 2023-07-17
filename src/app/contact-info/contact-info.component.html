@@ -1,0 +1,80 @@
+<app-entry-modal [header]="modalTitle" [visible]="showModal">
+    <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+        <div class="mb-3">
+            <input type="text" class="form-control" id="firstName" name="firstName" [(ngModel)]="formData.firstName"
+                placeholder="Your Name.." required />
+            <input type="hidden" id="contactID" [(ngModel)]="formData.contactID" name="contactID" />
+        </div>
+        <div class="mb-3">
+            <input type="email" class="form-control" id="email" name="email" [(ngModel)]="formData.email"
+                placeholder="Email Address" required />
+        </div>
+        <div class="mb-3">
+            <input type="text" class="form-control" id="mobileNumber" [(ngModel)]="formData.mobileNumber"
+                name="mobileNumber" placeholder="Mobile Number.." required />
+        </div>
+        <div class="mb-3">
+            <input type="text" class="form-control" id="suburb" name="suburb" [(ngModel)]="formData.suburb"
+                placeholder="Suburb" required>
+        </div>
+        <div class="mb-3">
+            <select class="form-control" id="city" name="city" [(ngModel)]="formData.city">
+                <option value="Perth">Perth</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <input type="text" class="form-control" id="subject" name="subject" [(ngModel)]="formData.subject"
+                placeholder="Subject" required>
+        </div>
+        <div class="mb-3">
+            <textarea type="text" rows="3" class="form-control" id="message" [(ngModel)]="formData.message"
+                name="message" placeholder="Your Message.." required></textarea>
+        </div>
+        <div class="form-group pt-2 d-flex justify-content-between">
+            <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid">{{saveUpdate}}</button>
+            <a class="btn btn-danger float-right" (click)="toggleModal()">Close</a>
+        </div>
+    </form>
+</app-entry-modal>
+
+<div class="container">
+    <p-table [value]="dataSource" [tableStyle]="{ 'min-width': '50rem' }">
+        <ng-template pTemplate="caption">
+            <div class="flex align-items-center justify-content-between">
+                <button type="button" class="btn btn-primary" (click)="toggleModal()"><ion-icon size="large"
+                        name="add-circle-outline"></ion-icon></button>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th class="hidden">ContactID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Mobile</th>
+                <th>Suburb</th>
+                <th>City</th>
+                <th>Subject</th>
+                <th>Message</th>
+                <th class="th-center">Action</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-dataSource>
+            <tr>
+                <td class="hidden">{{ dataSource.contactID }}</td>
+                <td>{{ dataSource.firstName }}</td>
+                <td>{{ dataSource.email }}</td>
+                <td>{{ dataSource.mobileNumber }}</td>
+                <td>{{ dataSource.suburb }}</td>
+                <td>{{ dataSource.city }}</td>
+                <td>{{ dataSource.subject }}</td>
+                <td>{{ dataSource.message }}</td>
+                <td class="td-center">
+                    <button type="button" class="btn btn-success" (click)="GetEditData(dataSource)"><ion-icon
+                            name="pencil-outline"></ion-icon> Edit</button>
+                    <button type="button" class="btn btn-danger ml-2" (click)="DeleteRowData(dataSource)"><ion-icon
+                            name="trash-outline"></ion-icon> Delete</button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

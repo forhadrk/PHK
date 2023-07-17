@@ -1,0 +1,95 @@
+<div class="container">
+    <div class="text-center" style="padding: 50px 15% 50px 15%">
+        <h3 class="font-weight-bold">
+            Get in touch with our house cleaning agency
+        </h3>
+        <h4 class="font-weight-bold">
+            Need help? leave your contact info and we will get in touch shortly
+        </h4>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            <div class="col-12">
+                <p>
+                    We have a team readily available to answer your queries, whether you use the phone, email or contact
+                    form, get in touch with our House Cleaning Agency for any query, we are always happy to help.
+                </p>
+            </div>
+            <div class="col-12">
+                <p>
+                    We have a team readily available to answer your queries, whether you use the phone, email or contact
+                    form, get in touch with our House Cleaning Agency for any query, we are always happy to help.
+                </p>
+            </div>
+            <div class="col-12" style="padding-top: 5rem;">
+                <h4><strong> Contact us to book your freequote.</strong></h4>
+                <ul class="marker-list">
+                    <li><i class="bi bi-check"></i> No contracts and no obligation</li>
+                    <li><i class="bi bi-check"></i> Competitive Rates</li>
+                    <li><i class="bi bi-check"></i> Top quality work</li>
+                    <li><i class="bi bi-check"></i> A service schedule designed to meet your needs</li>
+                    <li><i class="bi bi-check"></i> Proud members of the Better Business Bureau</li>
+                    <li><i class="bi bi-check"></i> We provide all our own supplies.</li>
+                </ul>
+            </div>
+            <div class="col-12" style="padding-top: 5rem;">
+                <div>
+                    <h4><strong>Look for us on</strong></h4>
+                </div>
+                <ul class="social-list">
+                    <li><a href="#">
+                            <i class="bi bi-facebook"></i>
+                        </a></li>
+
+                    <li><a href="#">
+                            <i class="bi bi-twitter"></i>
+                        </a></li>
+
+                    <li><a href="#">
+                            <i class="bi bi-instagram"></i>
+                        </a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-6 contactFormArea">
+            <div class="mb-5">
+                <h2><strong>Contact us</strong></h2>
+                <h6>Feel free to enquiry by sending us a quick note</h6>
+            </div>
+            <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+                <div class="mb-3">
+                    <input type="text" class="form-control" id="firstName" name="firstName" [(ngModel)]="formData.firstName" placeholder="Your Name.."
+                        required />
+                   <input type="hidden" id="contactID" [(ngModel)]="formData.contactID" name="contactID" />
+                </div>
+                <div class="mb-3">
+                    <input type="email" class="form-control" id="email" name="email" [(ngModel)]="formData.email" placeholder="Email Address"
+                        required />
+                </div>
+                <div class="mb-3">
+                    <input type="text" class="form-control" id="mobileNumber" [(ngModel)]="formData.mobileNumber" name="mobileNumber"
+                        placeholder="Mobile Number.." required />
+                </div>
+                <div class="mb-3">
+                    <input type="text" class="form-control" id="suburb" name="suburb" [(ngModel)]="formData.suburb" placeholder="Suburb" required>
+                </div>
+                <div class="mb-3">
+                    <select class="form-control" id="city" name="city" [(ngModel)]="formData.city">
+                        <option value="Perth">Perth</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <input type="text" class="form-control" id="subject" name="subject" [(ngModel)]="formData.subject" placeholder="Subject" required>
+                </div>
+                <div class="mb-3">
+                    <textarea type="text" rows="3" class="form-control" id="message" [(ngModel)]="formData.message" name="message"
+                        placeholder="Your Message.." required></textarea>
+                </div>
+                <div class="form-group pt-2 d-flex justify-content-between">
+                    <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

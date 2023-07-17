@@ -1,0 +1,17 @@
+.footert{
+    background-color: #252525;
+}
+
+.footert ul li a{
+    color: #fff !important;
+}
+
+.footerb{
+    background-color: #121212;
+    margin-top: -24px;
+    color: #fff !important;
+}
+
+.footerb ul li a{
+    color: #fff !important;
+}

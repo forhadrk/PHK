@@ -1,0 +1,65 @@
+<app-entry-modal [header]="modalTitle" [visible]="showModal">
+    <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+        <div class="form-group">
+            <label for="serviceTitle">Service Title</label>
+            <input type="text" class="form-control" id="serviceTitle" [(ngModel)]="formData.serviceTitle"
+                name="serviceTitle" required>
+            <input type="hidden" id="serviceListID" [(ngModel)]="formData.serviceListID" name="serviceListID" />
+        </div>
+        <div class="form-group">
+            <label for="price">Price</label>
+            <input type="text" class="form-control" id="price" [(ngModel)]="formData.price" name="price" required>
+        </div>
+        <div class="form-group">
+            <label for="priceFor">Price For</label>
+            <input class="form-control" id="priceFor" [(ngModel)]="formData.priceFor" name="priceFor" rows="4" required>
+        </div>
+        <div class="form-group">
+            <input class="form-check-input" type="checkbox" id="active" name="active" [(ngModel)]="formData.active">
+            <label class="form-check-label" for="active">Active</label>
+            <!-- <input class="form-check-input" type="checkbox" id="active" name="active" [(ngModel)]="active"
+                [ngModelOptions]="{ standalone: true }">
+            <label class="form-check-label" for="active">Active</label> -->
+        </div>
+        <div class="form-group pt-2 d-flex justify-content-between">
+            <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid">{{saveUpdate}}</button>
+            <a class="btn btn-danger float-right" (click)="toggleModal()">Close</a>
+        </div>
+    </form>
+</app-entry-modal>
+
+<div class="container">
+    <p-table [value]="dataSource" [tableStyle]="{ 'min-width': '50rem' }">
+        <ng-template pTemplate="caption">
+            <div class="flex align-items-center justify-content-between">
+                <button type="button" class="btn btn-primary" (click)="toggleModal()"><ion-icon size="large"
+                        name="add-circle-outline"></ion-icon></button>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th class="hidden">ServiceListID</th>
+                <th>Service Title</th>
+                <th>Pice</th>
+                <th>Price For</th>
+                <th>Active</th>
+                <th class="th-center">Action</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-dataSource>
+            <tr>
+                <td class="hidden">{{ dataSource.serviceListID }}</td>
+                <td>{{ dataSource.serviceTitle }}</td>
+                <td>{{ dataSource.price }}</td>
+                <td>{{ dataSource.priceFor }}</td>
+                <td>{{ dataSource.active }}</td>
+                <td class="td-center">
+                    <button type="button" class="btn btn-success" (click)="GetEditData(dataSource)"><ion-icon
+                            name="pencil-outline"></ion-icon> Edit</button>
+                    <button type="button" class="btn btn-danger ml-2" (click)="DeleteRowData(dataSource)"><ion-icon
+                            name="trash-outline"></ion-icon> Delete</button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

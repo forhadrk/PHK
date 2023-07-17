@@ -1,0 +1,8 @@
+.accordion-button{
+    font-weight: 600;
+    background-color: rgba(73,201,230,.95) !important;
+}
+
+.accordion-body{
+    color: #000;
+}

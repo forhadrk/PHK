@@ -1,0 +1,75 @@
+<div class="container-fluid pt-5">
+    <div class="container">
+        <div class="row text-center">
+            <h1><strong>Book a House Cleaning</strong> </h1>
+        </div>
+    </div>
+</div>
+<div class="container-fluid pt-5">
+    <div class="container">
+        <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+            <div class="row">
+                <div class="col-sm-12 col-md-4 col-lg-4">
+                    <label for="city" class="form-label">City</label>
+                    <select class="form-select" name="city">
+                        <option value="1">Perth</option>
+                    </select>
+                </div>
+                <div class="col-sm-12 col-md-4 col-lg-4">
+                    <div class="form-group">
+                        <label for="servicesID" class="form-label">Service Name</label>
+                        <select [(ngModel)]="formData.servicesID" name="servicesID" class="form-control"
+                            (change)="onDdlCategoryChange()">
+                            <option selected disabled value="-1">Select Category</option>
+                            <option *ngFor="let option of dataServices" [value]="option.servicesID">{{
+                                option.serviceName }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-4 col-lg-4">
+                    <div class="form-group">
+                        <label for="categoryPriceID" class="form-label">Select an option</label>
+                        <select [(ngModel)]="formData.categoryPriceID" name="categoryPriceID" class="form-control">
+                            <option selected disabled value="-1">Select Category</option>
+                            <option *ngFor="let option of dataServicesPrice" [value]="option.categoryPriceID">{{
+                                option.title }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-4 col-lg-4">
+                    <label for="bookingDate" class="form-label">City</label>
+                    <input type="date" class="form-control" name="bookingDate">
+                </div>
+                <div class="col-sm-12 col-md-4 col-lg-4">
+                    <div class="form-group">
+                        <label for="bookingHour" class="form-label">Select Hour</label>
+                        <select [(ngModel)]="formData.bookingHour" name="bookingHour" class="form-control">
+                            <option selected disabled value="-1">Select Hour</option>
+                            <option *ngFor="let option of databookingHour" [value]="option.ID">{{
+                                option.Name }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-4 col-lg-4">
+                    <div class="form-group">
+                        <label for="bookingMinutes" class="form-label">Select Minutes</label>
+                        <select [(ngModel)]="formData.bookingMinutes" name="bookingMinutes" class="form-control">
+                            <option selected disabled value="-1">Select Minutes</option>
+                            <option *ngFor="let option of databookingMinutes" [value]="option.ID">{{
+                                option.Name }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-12 pt-5">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>

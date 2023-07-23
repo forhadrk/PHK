@@ -1,0 +1,77 @@
+.divService1  {
+    background-image: url(/assets/Services/Kitchen.jpeg);
+    padding: 50px;
+}
+
+.divService2  {
+    background-image: url(/assets/Services/Kitchen.jpeg);
+    padding: 50px;
+}
+
+.divService3  {
+    background-image: url(/assets/Services/Kitchen.jpeg);
+    padding: 50px;
+}
+
+.divService4  {
+    background-image: url(/assets/Services/Kitchen.jpeg);
+    padding: 50px;
+}
+
+.divService5  {
+    background-image: url(/assets/Services/Kitchen.jpeg);
+    padding: 50px;
+}
+
+.divService1  .divServiceInfo {
+    background-color: rgba(6, 83, 180, 0.95);
+    padding: 30px;
+    /* width: 50%; */
+}
+
+.divService3  .divServiceInfo {
+    background-color: rgba(6, 83, 180, 0.95);
+    padding: 30px;
+   /* width: 50%; */
+}
+
+.divService5  .divServiceInfo {
+    background-color: rgba(6, 83, 180, 0.95);
+    padding: 30px;
+    /* width: 50%; */
+}
+
+.divService2  .divServiceInfo {
+    background-color: rgba(12, 137, 47, 0.95);
+    padding: 30px;
+    /* width: 50%; */
+    float: right;
+}
+
+.divService4  .divServiceInfo {
+    background-color: rgba(12, 137, 47, 0.95);
+    padding: 30px;
+    /* width: 50%; */
+    float: right;
+}
+
+.divService6  .divServiceInfo {
+    background-color: rgba(12, 137, 47, 0.95);
+    padding: 30px;
+    /* width: 50%; */
+    float: right;
+}
+
+.serviceTitle h3 {
+    color: #fff;
+}
+
+.divServiceInfo ul li {
+    color: #fff !important;
+    list-style: none;
+}
+
+.divServiceInfo hr{
+    border-top-color: #fff ;
+    border-top-width: 2px;
+}

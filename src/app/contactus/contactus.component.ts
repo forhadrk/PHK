@@ -9,8 +9,7 @@ import { API_URLS } from '../api-urls';
   templateUrl: './contactus.component.html',
   styleUrls: ['./contactus.component.css']
 })
-export class ContactusComponent implements OnInit {
-  //ContactID,FirstName,Email,MobileNumber,Suburb,City,Subject,Message
+export class ContactusComponent implements OnInit {  
   formData = {
     contactID: 0,
     firstName: '',

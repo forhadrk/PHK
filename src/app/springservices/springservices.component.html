@@ -1,77 +1,29 @@
-<div class="container">
-    <div class="text-center">
-        <h3><strong>Spring House Cleaning Services</strong> </h3>
-
-        <p class="mt-5">
-            If you’re in search of a dependable and effective home cleaning service, you’ve come to the right place! Our
-            team of expert cleaners is committed to making sure every nook and cranny of your home is impeccably clean
-            and
-            shining.
-        </p>
+<div class="container-fluid pt-5 pb-5">
+    <div class="container">
+        <div class="row text-center">
+            <h1><strong>Spring House Cleaning Services</strong> </h1>
+        </div>
+        <div class="row text-center">
+            <p class="mt-2">
+                If you’re in search of a dependable and effective home cleaning service, you’ve come to the right place!
+                Our team of expert cleaners is committed to making sure every nook and cranny of your home is impeccably
+                clean and shining.
+            </p>
+        </div>
     </div>
-    <div class="row pb-5">
-        <div class="col-12 text-center pt-3 pb-3">
-            <h3><strong> What is included in our home cleaning services?</strong> </h3>
-        </div>
-        <div class="col-5">
-            <div class="col-12 pb-2">
-                <h5><strong>Spring Cleaning Services?</strong> </h5>
-            </div>
-            <ul>
-                <li>General tidy up</li>
-                <li>Bathroom cleaning</li>
-                <li>Toilet Cleaning</li>
-                <li>Toilet cleaning</li>
-                <li>Kitchen cleaning</li>
-                <li>Wipe surfaces</li>
-                <li>Dusting</li>
-                <li>Vacuuming</li>
-                <li>Mopping</li>
-            </ul>
-        </div>
-        <div class="col-4">
-            <div class="col-12 pb-2">
-                <h5><strong>Additional services?</strong> </h5>
-            </div>
-            <ul>
-                <li>
-                    Changing Sheets <br><span class="text-muted"> Adds extra time to your service</span>
-                </li>
-                <li>
-                    Ironing & Folding<br><span class="text-muted"> (Adds extra time to your service)</span>
-                </li>
-                <li>
-                    Oven Cleaning<br><span class="text-muted"> (Additional Fee)</span>
-                </li>
-                <li>
-                    Window Cleaning<br><span class="text-muted"> (Additional Fee)</span>
-                </li>
-            </ul>
-        </div>
-        <div class="col-3 PricingArea">
-            <div class="text-center">
-                <h2><strong> Pricing</strong></h2>
-                <hr>
-            </div>
-            <div class="text-center">
-                <span class="priceRegular">$105</span> <br>
-                <p><strong>for 2 Hours</strong></p>
-                <hr>
-            </div>
-            <div class="text-center">
-                <span class="priceExtra">$50</span> <br>
-                <p><strong>Per Hour Thereafter</strong></p>
-            </div>
-        </div>
-        <div class="col-12 text-center">
-            <button class="btn btn-primary btnBook">Book a Regular Clean</button>
-        </div>
+</div>
+<div class="container-fluid pt-4" style="background-color: #ddd;">
+    <app-service-price-parent [ServicesID]="ServicesID"></app-service-price-parent>
+</div>
+<div class="row pt-4">
+    <div class="container">
+        <app-service-list-parent></app-service-list-parent>
     </div>
 </div>
 <div class="container-fluid" style="background-color: #ddd;">
     <div class="container">
         <div class="row" style="padding: 50px;">
-            <div class="col-4">
+            <div class="col-sm-12 col-md-6 col-lg-4">
                 <div class="otherServices">
                     <div class="col-12 text-center pt-4">
                         <h4>Weekly & Fortnightly</h4>
@@ -95,7 +47,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-4 otherServices">
+            <div class="col-sm-12 col-md-6 col-lg-4 otherServices">
                 <div class="otherServices">
                     <div class="col-12 text-center pt-4">
                         <h4>Once-off & Monthly</h4>
@@ -119,7 +71,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-4">
+            <div class="col-sm-12 col-md-6 col-lg-4">
                 <div class="otherServices">
                     <div class="col-12 text-center pt-4">
                         <h4>Moving-in & Moving-out</h4>

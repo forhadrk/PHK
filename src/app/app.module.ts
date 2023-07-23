@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { TableModule } from 'primeng/table';
 import { IonicModule } from '@ionic/angular';
+import { LightboxModule } from 'ngx-lightbox';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,6 +24,17 @@ import { FaqQuestionsComponent } from './faq-questions/faq-questions.component';
 import { EntrymodalComponent } from './entrymodal/entrymodal.component';
 import { ServicepPriceComponent } from './servicep-price/servicep-price.component';
 import { ContactInfoComponent } from './contact-info/contact-info.component';
+import { ServiceWiseCategoryComponent } from './service-wise-category/service-wise-category.component';
+import { ServiceListParentComponent } from './service-list-parent/service-list-parent.component';
+import { ServiceListChildComponent } from './service-list-child/service-list-child.component';
+import { ServicePriceParentComponent } from './service-price-parent/service-price-parent.component';
+import { ServicePriceChildComponent } from './service-price-child/service-price-child.component';
+import { LoginComponent } from './login/login.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { LogoutComponent } from './logout/logout.component';
+import { GalleryComponent } from './gallery/gallery.component';
+import { BookingComponent } from './booking/booking.component';
+import { ServiceCategoryPriceComponent } from './service-category-price/service-category-price.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +54,18 @@ import { ContactInfoComponent } from './contact-info/contact-info.component';
     FaqQuestionsComponent,
     EntrymodalComponent,
     ServicepPriceComponent,
-    ContactInfoComponent
+    ContactInfoComponent,
+    ServiceWiseCategoryComponent,
+    ServiceListParentComponent,
+    ServiceListChildComponent,
+    ServicePriceParentComponent,
+    ServicePriceChildComponent,
+    LoginComponent,
+    DashboardComponent,
+    LogoutComponent,
+    GalleryComponent,
+    BookingComponent,
+    ServiceCategoryPriceComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +73,8 @@ import { ContactInfoComponent } from './contact-info/contact-info.component';
     FormsModule,
     HttpClientModule,
     TableModule,
-    IonicModule.forRoot()
+    IonicModule.forRoot(),
+    LightboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

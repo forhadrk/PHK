@@ -39,9 +39,9 @@
                 <td class="hidden">{{ dataSource.faqdid }}</td>
                 <td>{{ dataSource.questionTitle }}</td>
                 <td>{{ dataSource.questionAnswer }}</td>
-                <td class="td-center">
-                    <button type="button" class="btn btn-success" (click)="GetEditData(dataSource)"><ion-icon name="pencil-outline"></ion-icon> Edit</button>
-                    <button type="button" class="btn btn-danger ml-2" (click)="DeleteRowData(dataSource)"><ion-icon name="trash-outline"></ion-icon> Delete</button>
+                <td class="td-center tdAction">
+                    <button type="button" class="btn btn-success" (click)="GetEditData(dataSource)"><ion-icon name="pencil-outline"></ion-icon></button>
+                    <button type="button" class="btn btn-danger ml-2" (click)="DeleteRowData(dataSource)"><ion-icon name="trash-outline"></ion-icon></button>
                 </td>
             </tr>
         </ng-template>

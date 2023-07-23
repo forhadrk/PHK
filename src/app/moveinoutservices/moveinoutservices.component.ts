@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./moveinoutservices.component.css']
 })
 export class MoveinoutservicesComponent {
-
+  ServicesID: string = "3";
 }

@@ -1,46 +1,53 @@
-<div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-    <!-- Indicators -->
+<!-- <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
     <ol class="carousel-indicators">
-      <li data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"></li>
-      <li data-bs-target="#myCarousel" data-bs-slide-to="1"></li>
-      <li data-bs-target="#myCarousel" data-bs-slide-to="2"></li>
+        <li data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"></li>
+        <li data-bs-target="#myCarousel" data-bs-slide-to="1"></li>
+        <li data-bs-target="#myCarousel" data-bs-slide-to="2"></li>
     </ol>
-
-    <!-- Slides -->
     <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="https://jangarcleaners.com.au/wp-content/uploads/2019/06/banner-slider-1.jpg" class="d-block w-100" alt="Slide 1">
-        <div class="carousel-caption">
-          <h3>Service 1</h3>
-          <p>This is the description of service 1.</p>
+        <div class="carousel-item active">
+            <img src="https://jangarcleaners.com.au/wp-content/uploads/2019/06/banner-slider-1.jpg"
+                class="d-block w-100" alt="Slide 1">
+            <div class="carousel-caption">
+                <h3>Service 1</h3>
+                <p>This is the description of service 1.</p>
+            </div>
         </div>
-      </div>
-      <div class="carousel-item">
-        <img src="https://jangarcleaners.com.au/wp-content/uploads/2019/06/banner-slider-1.jpg" class="d-block w-100" alt="Slide 2">
-        <div class="carousel-caption">
-          <h3>Service 2</h3>
-          <p>This is the description of service 2.</p>
+        <div class="carousel-item">
+            <img src="https://jangarcleaners.com.au/wp-content/uploads/2019/06/banner-slider-1.jpg"
+                class="d-block w-100" alt="Slide 2">
+            <div class="carousel-caption">
+                <h3>Service 2</h3>
+                <p>This is the description of service 2.</p>
+            </div>
         </div>
-      </div>
-      <div class="carousel-item">
-        <img src="https://jangarcleaners.com.au/wp-content/uploads/2019/06/banner-slider-1.jpg" class="d-block w-100" alt="Slide 3">
-        <div class="carousel-caption">
-          <h3>Service 3</h3>
-          <p>This is the description of service 3.</p>
+        <div class="carousel-item">
+            <img src="https://jangarcleaners.com.au/wp-content/uploads/2019/06/banner-slider-1.jpg"
+                class="d-block w-100" alt="Slide 3">
+            <div class="carousel-caption">
+                <h3>Service 3</h3>
+                <p>This is the description of service 3.</p>
+            </div>
         </div>
-      </div>
     </div>
-
-    <!-- Navigation arrows -->
     <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
     </button>
     <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
     </button>
-  </div>
+</div> -->
+<div class="container-fluid serviceSummary">
+    <div class="container">
+        <div *ngFor="let option of dataServices" class="row">
+            <div class="mx-auto p-2" style="width: 300px;">
+                <span class="serviceTitle" style="width: 260px;"> {{ option.serviceName }}</span>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="container text-center">
     <h1 class="display-8">House Cleaning Services in Australia</h1>
     <p class="p-4" style="padding: 1% 20% 9% !important;">
@@ -50,7 +57,18 @@
 </div>
 <div class="container text-center pb-5">
     <div class="row">
-        <div class="col-3">
+        <div class="col-sm-12 col-md-4 col-lg-3" *ngFor="let option of dataServices">
+            <div>
+                <img class="imgHome"
+                    [src]="option.imageUrl"
+                    alt="" />
+            </div>
+            <div class="divServicesSummary">
+                <h3><a [href]="option.pageUrl"> {{ option.serviceName }}</a></h3>
+                <h5> {{ option.serviceInfo }}</h5>             
+            </div>
+        </div>
+        <!-- <div class="col-3">
             <div>
                 <img class="imgHome"
                     src="https://smartdata.tonytemplates.com/cleaning-service-v3/ele-demo1/wp-content/uploads/sites/7/2017/06/service-circle-1.png"
@@ -58,11 +76,7 @@
             </div>
             <div class="divServicesSummary">
                 <h3><a href="/Weekly">Regular House Cleaning</a></h3>
-                <h5>Weekly & Fortnightly</h5>
-                <!-- <p>
-                    Our regular cleaning services will ensure your home is perfectly maintained, you will no longer
-                    worry about upkeeping your home.
-                </p> -->
+                <h5>Weekly & Fortnightly</h5>             
             </div>
         </div>
         <div class="col-3">
@@ -73,11 +87,7 @@
             </div>
             <div class="divServicesSummary">
                 <h3><a href="/Monthly">Casual House Cleaning</a></h3>
-                <h5>Once-off & Monthly</h5>
-                <!-- <p>
-                    Let us take care of home every now and then. Enjoy the feeling of opening your door to a clean home
-                    using our cleaning services.
-                </p> -->
+                <h5>Once-off & Monthly</h5>              
             </div>
         </div>
         <div class="col-3">
@@ -88,11 +98,7 @@
             </div>
             <div class="divServicesSummary">
                 <h3><a href="/Moveinout">Vacate House Cleaning</a></h3>
-                <h5>Moving-in & Moving-out</h5>
-                <!-- <p>
-                    When it’s time to move house, leave the hard work to a team of experienced Fresharoos who will make
-                    your house look tip-top.
-                </p> -->
+                <h5>Moving-in & Moving-out</h5>               
             </div>
         </div>
         <div class="col-3">
@@ -104,12 +110,8 @@
             <div class="divServicesSummary">
                 <h3><a href="/Spring">Spring House Cleaning</a></h3>
                 <h5>Moving-in & Moving-out</h5>
-                <!-- <p>
-                    When it’s time to move house, leave the hard work to a team of experienced Fresharoos who will make
-                    your house look tip-top.
-                </p> -->
             </div>
-        </div>
+        </div> -->
     </div>
 </div>
 <div class="container text-center">
@@ -126,13 +128,13 @@
         to trust that they will perform a first-class cleaning job for you. Putting our employees through a rigorous
         training program ensures each member of our cleaning team understands their role and how it relates to the
         overall performance of the team.
-    </div>    
+    </div>
 </div>
 <div class="testimonial">
     <div class="container text-center">
         <div class="get-banner text-center">
             <h2>Get started with your <b>free estimate</b></h2>
-            <a href="https://smartdata.tonytemplates.com/cleaning-service-v3/ele-demo1/order-form/"
+            <a href="/booking"
                 class="btn btn-white"><i class="icon icon-bell"></i>Get Free Estimate</a>
         </div>
     </div>
@@ -148,7 +150,7 @@
     <div class="row">
         <div class="col-md-4 col-sm-4 col-xs-12">
             <div class="how-works">
-                <div class="how-works-number how-works-number--color1">1</div>
+                <div class="how-works-number how-works-number--color3"><ion-icon name="checkmark-outline"></ion-icon></div>
                 <h3 class="how-works-title">Book online in<span> <span> 60 seconds</span></span></h3>
                 <p>
                     Book &amp; pay online. We’ll match you with a trusted, experienced house cleaner </p>
@@ -156,7 +158,7 @@
         </div>
         <div class="col-md-4 col-sm-4 col-xs-12">
             <div class="how-works">
-                <div class="how-works-number how-works-number--color2">2</div>
+                <div class="how-works-number how-works-number--color3"><ion-icon name="checkmark-outline"></ion-icon></div>
                 <h3 class="how-works-title">Get a<span> <span> 5 star cleaner</span></span></h3>
                 <p>
                     Every cleaner is friendly and reliable. They’ve been background-checked &amp; rated 5-stars </p>
@@ -164,7 +166,7 @@
         </div>
         <div class="col-md-4 col-sm-4 col-xs-12">
             <div class="how-works">
-                <div class="how-works-number how-works-number--color3">3</div>
+                <div class="how-works-number how-works-number--color3"><ion-icon name="checkmark-outline"></ion-icon></div>
                 <h3 class="how-works-title">Manage everything<span> <span> online</span></span></h3>
                 <p>
                     Add visits, skip visits, leave notes, and book extra services laundry, fridge and oven cleaning </p>
@@ -172,25 +174,32 @@
         </div>
     </div>
 </div>
-<div class="container">
+<!-- <div class="container-fluid">
     <div class="row">
-    <div class="gallery col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <h1 class="gallery-title">Our Projects</h1>
+        <a href="https://unsplash.it/1200/768.jpg?image=251" data-toggle="lightbox">
+            <img src="https://unsplash.it/600.jpg?image=251">
+        </a>
     </div>
-
-    <div>
-        <button class="btn btn-default filter-button" data-filter="all">All</button>
-        <button class="btn btn-default filter-button" data-filter="hdpe">HDPE Pipes</button>
-        <button class="btn btn-default filter-button" data-filter="sprinkle">Sprinkle Pipes</button>
-        <button class="btn btn-default filter-button" data-filter="spray">Spray Nozzle</button>
-        <button class="btn btn-default filter-button" data-filter="irrigation">Irrigation Pipes</button>
+    <div class="row">
+        <a href="https://unsplash.it/1200/768.jpg?image=254" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+            <img src="https://unsplash.it/600.jpg?image=254" class="img-fluid">
+        </a>      
     </div>
-    <br/>
+    <div class="row">
+        <div class="gallery col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <h1 class="gallery-title">Our Projects</h1>
+        </div>
 
-
-
-        <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter hdpe">
-            <img src="https://www.w3schools.com/w3images/mountains.jpg" class="img-responsive">
+        <div>
+            <button class="btn btn-default filter-button" data-filter="all">All</button>
+            <button class="btn btn-default filter-button" data-filter="hdpe">HDPE Pipes</button>
+            <button class="btn btn-default filter-button" data-filter="sprinkle">Sprinkle Pipes</button>
+            <button class="btn btn-default filter-button" data-filter="spray">Spray Nozzle</button>
+            <button class="btn btn-default filter-button" data-filter="irrigation">Irrigation Pipes</button>
+        </div>
+        <br />
+        <div class="gallery_product col-lg-3 col-md-3 col-sm-3 col-xs-6 filter hdpe">
+            <img src="/assets/Home/Gallery_1.jpeg" style="width: 100%;" class="img-fluid">
         </div>
 
         <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter sprinkle">
@@ -224,6 +233,5 @@
         <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter irrigation">
             <img src="https://www.w3schools.com/w3images/people3.jpg" class="img-responsive">
         </div>
-     
     </div>
-</div>
+</div> -->

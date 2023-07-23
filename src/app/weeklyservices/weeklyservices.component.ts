@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./weeklyservices.component.css']
 })
 export class WeeklyservicesComponent {
+  ServicesID: string = "1";
 
 }

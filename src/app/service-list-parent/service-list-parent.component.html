@@ -1,0 +1,37 @@
+<div class="container">
+    <div *ngFor="let option of dataSource; let i = index" class="row pb-5">
+        <!-- <div [class]="option.divID">
+            <div class="row">
+                <div class="col-6">
+                    <img src="/assets/Services/Kitchen.jpeg" />
+                </div>
+                <div class="col-6">
+                    <div class="divServiceInfo">
+                        <div class="col-12">
+                            <div class="serviceTitle">
+                                <h3>{{ option.serviceTitle }}</h3>
+                                <hr>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <app-service-list-child [data]="option.serviceListID"></app-service-list-child>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <div [class]="option.divID">
+            <div class="divServiceInfo col-sm-12 col-md-6 col-lg-6">
+                <div class="col-12">
+                    <div class="serviceTitle">
+                        <h3>{{ option.serviceTitle }}</h3>
+                        <hr>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <app-service-list-child [data]="option.serviceListID"></app-service-list-child>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

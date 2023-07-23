@@ -1,0 +1,10 @@
+.divPriceChild{
+    height: 170px;;
+}
+.simple-list{
+    list-style: none;
+}
+.simple-list li {
+    /* padding: 11px 0; */
+    line-height: 20px;
+}

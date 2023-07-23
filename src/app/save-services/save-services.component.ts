@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { NgForm } from '@angular/forms';
+import { API_URLS } from '../api-urls';
+import { SweetAlertService } from '../sweet-alert.service';
 
 @Component({
   selector: 'app-save-services',
@@ -8,8 +11,6 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SaveServicesComponent implements OnInit {
   dataSource: any[] = [];
-  columns: any[] = [];
-
     formData = {
       
       servicesID:0,
@@ -19,48 +20,76 @@ export class SaveServicesComponent implements OnInit {
     };
     isSaving = false;
     saveSuccess = false;
+    showModal = false;
+    saveUpdate: string = "Save";
+    modalTitle: string = "Service Category";
   
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient, private sweetAlertService: SweetAlertService) {}
 
     ngOnInit() {
       this.loadData();
     }
 
     loadData() {
-      this.http.get('https://localhost:7253/api/ServiceName/GetAllData').subscribe((response: any) => {
-       
+      this.http.get(API_URLS.Service_Name_Get_All_Data).subscribe((response: any) => {       
         this.dataSource = response;
-
-        if (response.length > 0){ 
-          var columnsIn = response[0]; 
-          for(var key in columnsIn){
-            this.columns.push(key); //console.log(key);
-          } 
-        }else{
-            console.log("No columns");
-        }
-        //this.columns = response.columns;
-
         console.log(this.dataSource);
-        console.log(this.columns);
       });
     }
   
-    onSubmit() {
-      console.log(this.formData);
+    onSubmit(form: NgForm) {
+      //console.log(this.formData);
+      if (!form.invalid) {
       this.isSaving = true;
-      this.http.post('https://localhost:7253/api/ServiceName/SaveUpdateData', this.formData)
+      this.http.post(API_URLS.Service_Name_Save_Update_Data, this.formData)
         .subscribe(
           () => {
+            this.sweetAlertService.showSuccessPopupAlert('Data Process Successfully!');
             this.isSaving = false;
-            this.saveSuccess = true;
+            this.loadData();
+            this.showModal = false;
             this.resetForm();
           },
           (error) => {
+
+            this.sweetAlertService.showErrorAlert('Something went wrong!');
             console.log(error);
             this.isSaving = false;
           }
         );
+      }
+    }
+
+    GetEditData(data: any) {      
+      this.formData.servicesID = data.servicesID;
+      this.http.post(API_URLS.Service_Name_Get_Edit_Data, this.formData).subscribe((response: any) => {
+        console.log(response);
+        this.formData.serviceName = response[0].serviceName;
+        this.formData.serviceInfo = response[0].serviceInfo;
+        this.formData.active = response[0].active;
+  
+        this.saveUpdate = "Update";
+        this.showModal = !this.showModal;
+      });
+    }
+  
+  
+    DeleteRowData(data: any) {
+      this.formData.servicesID =  data.servicesID;
+      this.sweetAlertService.showConfirmDeleteAlert('You won\'t be able to revert this!').then((result) => {
+        if (result.isConfirmed) {
+          this.http.post(API_URLS.Service_Name_Delete_Selected_Data, this.formData).subscribe((response: any) => {
+            console.log(response);
+            this.loadData();
+            this.sweetAlertService.showSuccessPopupAlert('Your item has been deleted');
+          },
+            (error) => {
+              console.log(error);
+              this.sweetAlertService.showErrorAlert('Your item deleted failed:)');
+            }
+          );
+        }
+      });
     }
   
     resetForm() {
@@ -70,5 +99,11 @@ export class SaveServicesComponent implements OnInit {
         serviceInfo: '',
         active : false,
       };
+      this.saveUpdate = "Save";
+    }
+
+    toggleModal() {
+      this.resetForm();
+      this.showModal = !this.showModal;
     }
   }

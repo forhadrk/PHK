@@ -1,10 +1,14 @@
-import { NgModule  } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { TableModule } from 'primeng/table';
 import { IonicModule } from '@ionic/angular';
 import { LightboxModule } from 'ngx-lightbox';
+import { StoreModule } from '@ngrx/store';
+import { authReducer } from './auth.state';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from './auth.effects';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -35,6 +39,10 @@ import { LogoutComponent } from './logout/logout.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { BookingComponent } from './booking/booking.component';
 import { ServiceCategoryPriceComponent } from './service-category-price/service-category-price.component';
+import { ServiceCategoryPriceDetailsComponent } from './service-category-price-details/service-category-price-details.component';
+import { UsersComponent } from './users/users.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DialogContentComponent } from './dialog-content/dialog-content.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +73,10 @@ import { ServiceCategoryPriceComponent } from './service-category-price/service-
     LogoutComponent,
     GalleryComponent,
     BookingComponent,
-    ServiceCategoryPriceComponent
+    ServiceCategoryPriceComponent,
+    ServiceCategoryPriceDetailsComponent,
+    UsersComponent,
+    DialogContentComponent    
   ],
   imports: [
     BrowserModule,
@@ -73,8 +84,11 @@ import { ServiceCategoryPriceComponent } from './service-category-price/service-
     FormsModule,
     HttpClientModule,
     TableModule,
+    StoreModule.forRoot({ auth: authReducer }),
+    EffectsModule.forRoot([AuthEffects]), 
     IonicModule.forRoot(),
-    LightboxModule
+    LightboxModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

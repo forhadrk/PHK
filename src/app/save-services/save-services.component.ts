@@ -3,6 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 import { API_URLS } from '../api-urls';
 import { SweetAlertService } from '../sweet-alert.service';
+import { AuthState } from '../auth.state';
+import { Store } from '@ngrx/store';
+import { logout } from '../auth.actions';
 
 @Component({
   selector: 'app-save-services',
@@ -10,6 +13,17 @@ import { SweetAlertService } from '../sweet-alert.service';
   styleUrls: ['./save-services.component.css']
 })
 export class SaveServicesComponent implements OnInit {
+
+  isLoggedIn = false;
+  token: string | null = null;
+
+  constructor(private http: HttpClient, private sweetAlertService: SweetAlertService,
+    private store: Store<{ auth: AuthState }>) {
+      this.store.select('auth').subscribe((state) => {
+        console.log(state.email);
+      });
+  }
+
   dataSource: any[] = [];
     formData = {
       
@@ -24,9 +38,10 @@ export class SaveServicesComponent implements OnInit {
     saveUpdate: string = "Save";
     modalTitle: string = "Service Category";
   
-    constructor(private http: HttpClient, private sweetAlertService: SweetAlertService) {}
+    //constructor(private http: HttpClient, private sweetAlertService: SweetAlertService) {}
 
     ngOnInit() {
+      console.log('Token Data: ' + this.token);
       this.loadData();
     }
 

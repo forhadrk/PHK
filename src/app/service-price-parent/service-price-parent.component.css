@@ -45,6 +45,15 @@ font-size: 40pt;
     font-weight: 600;
     font-size: 1.3rem;
 }
+
+.spPriceInfo{
+    display: inline-block;
+    font-family: 'Lato', 'Arial', sans-serif;
+    font-weight: 400;
+    font-size: 2rem;
+    color: #50525e;
+    display: block;
+}
 /* .simple-list{
     list-style: none;
 }

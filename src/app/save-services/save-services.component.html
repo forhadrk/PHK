@@ -23,7 +23,9 @@
 </app-entry-modal>
 
 <div class="container">
-  <p-table [value]="dataSource" [tableStyle]="{ 'min-width': '50rem' }">
+  <p-table [value]="dataSource" [tableStyle]="{ 'min-width': '50rem' }"  [paginator]="true" [rows]="10"
+  [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+  [rowsPerPageOptions]="[10,25,50]">
     <ng-template pTemplate="caption">
       <div class="flex align-items-center justify-content-between">
           <button type="button" class="btn btn-primary" (click)="toggleModal()"><ion-icon size="large"
@@ -46,10 +48,10 @@
         <td>{{ dataSource.serviceInfo }}</td>
         <td>{{ dataSource.active }}</td>
         <td class="td-center">
-          <button type="button" class="btn btn-success" (click)="GetEditData(dataSource)"><ion-icon
-                  name="pencil-outline"></ion-icon> Edit</button>
-          <button type="button" class="btn btn-danger ml-2" (click)="DeleteRowData(dataSource)"><ion-icon
-                  name="trash-outline"></ion-icon> Delete</button>
+          <button title="Edit" type="button" class="btn btn-success" (click)="GetEditData(dataSource)"><ion-icon
+                  name="pencil-outline"></ion-icon></button>
+          <button title="Delete" type="button" class="btn btn-danger ml-2" (click)="DeleteRowData(dataSource)"><ion-icon
+                  name="trash-outline"></ion-icon></button>
       </td>
       </tr>
     </ng-template>

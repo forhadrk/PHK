@@ -19,6 +19,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { BookingComponent } from './booking/booking.component';
 import { ServiceCategoryPriceComponent } from './service-category-price/service-category-price.component';
+import { ServiceCategoryPriceDetailsComponent } from './service-category-price-details/service-category-price-details.component';
+import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
   {path:'', component:HomeComponent},
@@ -40,6 +42,8 @@ const routes: Routes = [
   {path:'gallery', component:GalleryComponent},
   {path:'booking', component:BookingComponent},
   {path:'ServiceCategoryPrice', component:ServiceCategoryPriceComponent},
+  {path:'ServiceCategoryPriceDetails', component:ServiceCategoryPriceDetailsComponent},
+  {path:'users', component:UsersComponent},
 ];
 
 @NgModule({

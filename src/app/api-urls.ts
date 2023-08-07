@@ -42,5 +42,15 @@ export const API_URLS = {
     Service_Category_Price_Get_Edit_Data: `${API_BASE_URL}/ServiceCategoryPrice/GetSelectedData`,
     Service_Category_Price_Delete_Selected_Data: `${API_BASE_URL}/ServiceCategoryPrice/DeleteSelectedData`,
 
+    Service_Category_Price_Details_Get_All_Data: `${API_BASE_URL}/ServiceCategoryPriceDetails/GetAllData`,
+    Service_Category_Price_Details_Save_Update_Data: `${API_BASE_URL}/ServiceCategoryPriceDetails/SaveUpdateData`,
+    Service_Category_Price_Details_Get_Edit_Data: `${API_BASE_URL}/ServiceCategoryPriceDetails/GetSelectedData`,
+    Service_Category_Price_Details_Delete_Selected_Data: `${API_BASE_URL}/ServiceCategoryPriceDetails/DeleteSelectedData`,
+    Service_Category_Price_Details_Selected_Service_Prices_Data: `${API_BASE_URL}/ServiceCategoryPriceDetails/GetSelectedServicePrices`,
+
+    Users_Get_All_Data: `${API_BASE_URL}/users/GetAllData`,
+    Users_Save_Update_Data: `${API_BASE_URL}/users/SaveUpdateData`,
+    Users_Get_Edit_Data: `${API_BASE_URL}/users/GetSelectedData`,
+    Users_Delete_Selected_Data: `${API_BASE_URL}/users/DeleteSelectedData`,
     
   };

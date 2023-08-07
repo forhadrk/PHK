@@ -9,6 +9,9 @@
                     <span
                         class="cost-calculator-summary-price cost-calculator-small-currency cost-calculator-align-top cost-calculator-after-align-bottom"
                         id="basic-service-cost"><span class="cost-calculator-currency">$</span>{{option.price}}</span>
+                        <span class="spPriceInfo">
+                            {{option.priceInfo}}
+                        </span>
                 </div>
                 <div class="col-12 pt-2 text-center">
                     <app-service-price-child [data]="option.categoryPriceID"></app-service-price-child>                   

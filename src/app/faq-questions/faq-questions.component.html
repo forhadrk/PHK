@@ -20,7 +20,9 @@
 
 
 <div class="container">
-    <p-table [value]="dataSource" [tableStyle]="{ 'min-width': '50rem' }">
+    <p-table [value]="dataSource" [tableStyle]="{ 'min-width': '50rem' }"  [paginator]="true" [rows]="8"
+    [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [rowsPerPageOptions]="[8,15,50]">
         <ng-template pTemplate="caption">
             <div class="flex align-items-center justify-content-between">
                 <button type="button" class="btn btn-primary" (click)="toggleModal()"><ion-icon size="large" name="add-circle-outline"></ion-icon></button>                      

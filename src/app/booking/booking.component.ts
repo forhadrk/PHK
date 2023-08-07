@@ -35,7 +35,7 @@ export class BookingComponent  implements OnInit{
       this.databookingHour.push({ ID: i, Name: i });
     }
 
-    for (let j = 1; j <= 60; j++) {
+    for (let j = 0; j <= 60; j+= 5) {
       this.databookingMinutes.push({ ID: j, Name: j });
     }
   }

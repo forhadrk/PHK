@@ -1,77 +1,133 @@
-<div class="container-fluid pt-5">
+<!-- <div class="container-fluid pt-5">
     <div class="container">
         <div class="row text-center">
             <h1><strong>Book a House Cleaning</strong> </h1>
         </div>
     </div>
-</div>
+</div> -->
 <div class="container-fluid pt-5">
     <div class="container">
-        <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
-            <div class="row">
-                <div class="col-sm-12 col-md-4 col-lg-4">
-                    <label for="city" class="form-label">City</label>
-                    <select class="form-select" name="city">
-                        <option value="1">Perth</option>
-                    </select>
-                </div>
-                <div class="col-sm-12 col-md-4 col-lg-4">
-                    <div class="form-group">
-                        <label for="servicesID" class="form-label">Service Name</label>
-                        <select [(ngModel)]="formData.servicesID" name="servicesID" class="form-control"
-                            (change)="onDdlCategoryChange()">
-                            <option selected disabled value="-1">Select Category</option>
-                            <option *ngFor="let option of dataServices" [value]="option.servicesID">{{
-                                option.serviceName }}
-                            </option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-4 col-lg-4">
-                    <div class="form-group">
-                        <label for="categoryPriceID" class="form-label">Select an option</label>
-                        <select [(ngModel)]="formData.categoryPriceID" name="categoryPriceID" class="form-control">
-                            <option selected disabled value="-1">Select Category</option>
-                            <option *ngFor="let option of dataServicesPrice" [value]="option.categoryPriceID">{{
-                                option.title }}
-                            </option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12 col-md-4 col-lg-4">
-                    <label for="bookingDate" class="form-label">Booking Date</label>
-                    <input type="date" class="form-control" name="bookingDate">
-                </div>
-                <div class="col-sm-12 col-md-4 col-lg-4">
-                    <div class="form-group">
-                        <label for="bookingHour" class="form-label">Booking Time</label>
-                        <div class="row">
-                            <div class="col-6">
-                                <select [(ngModel)]="formData.bookingHour" name="bookingHour" class="form-control">
-                                    <option selected disabled value="-1">Select Hour</option>
-                                    <option *ngFor="let option of databookingHour" [value]="option.ID">{{
-                                        option.Name }}
-                                    </option>
-                                </select>
+        <p-fieldset legend="Book Your Service">
+            <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+                <p-steps [model]="bookingSteps" [readonly]="true" [(activeIndex)]="activeStepIndex"></p-steps>
+
+                <div *ngIf="activeStepIndex === 0" class="pb-5">
+                    <div class="row pt-2">
+                        <p-card>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-4 col-lg-4">
+                                    <div class="form-group">
+                                        <label for="servicesID" class="form-label">Service Name</label>
+                                        <p-dropdown [options]="dataServices" [(ngModel)]="formData.servicesID"
+                                            placeholder="Select a Service" optionValue="servicesID"
+                                            optionLabel="serviceName" name="servicesID"
+                                            (onChange)="onDdlCategoryChange()">
+                                        </p-dropdown>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-4 col-lg-4">
+                                    <div class="form-group">
+                                        <label for="categoryPriceID" class="form-label">Select an option</label>
+                                        <p-dropdown [options]="dataServicesPrice" [(ngModel)]="formData.categoryPriceID"
+                                            placeholder="Select Option" optionValue="categoryPriceID"
+                                            optionLabel="title" name="categoryPriceID"
+                                            (onChange)="onDdlCategoryPriceChange()">
+                                        </p-dropdown>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-6">
-                                <select [(ngModel)]="formData.bookingMinutes" name="bookingMinutes"
-                                    class="form-control">
-                                    <option selected disabled value="-1">Select Minutes</option>
-                                    <option *ngFor="let option of databookingMinutes" [value]="option.ID">{{
-                                        option.Name }}
-                                    </option>
-                                </select>
+                            <div class="row pt-5">
+                                <h4><strong>Services You Can Include With Additional Fee</strong></h4>
+                                <p-divider></p-divider>
+                                <div class="col-sm-12 col-md-4 col-lg-4">
+                                    <div *ngFor="let services of dataBookingServices" class="field-checkbox pb-2">
+                                        <p-checkbox name="ServiceGroup" [value]="services.price"
+                                            [inputId]="services.otherServicesID"
+                                            (click)="updateSelectedService(services.otherServicesID)"></p-checkbox>
+                                        <label [for]="services.otherServicesID" class="chklabel">{{ services.serviceName
+                                            }}</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </p-card>
+                    </div>
+                </div>
+
+                <div *ngIf="activeStepIndex === 1">
+                    <p-card>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                <label for="bookingDate" class="form-label lblBookingDate">Booking Date</label>
+                                <p-calendar class="max-w-full" [(ngModel)]="formData.bookingDate" [inline]="true"
+                                    [showWeek]="true" [minDate]="formData.bookingDate" name="bookingDate"></p-calendar>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                <label for="bookingHour" class="form-label">Booking Time</label>
+                                <p-dropdown [options]="databookingHours" name="databookingHours"
+                                    [(ngModel)]="formData.bookingHour" optionValue="code" optionLabel="name">
+                                </p-dropdown>
                             </div>
                         </div>
+                    </p-card>
+                </div>
+
+                <div *ngIf="activeStepIndex === 2">
+                    <div class="row">
+                        <p-card>
+                            <div class="flex flex-column gap-2">
+                                <label htmlFor="bookingName" class="form-label">First and Last Name</label>
+                                <input pInputText id="bookingName" name="bookingName"
+                                    [(ngModel)]="formData.bookingName" />
+                            </div>
+                            <div class="flex flex-column gap-2">
+                                <label htmlFor="email" class="form-label">Email</label>
+                                <input pInputText id="email" name="email" [(ngModel)]="formData.email" />
+                            </div>
+                            <div class="flex flex-column gap-2">
+                                <label htmlFor="suburb" class="form-label">Mobile</label>
+                                <input pInputText id="mobile" name="mobile" [(ngModel)]="formData.mobile" />
+                            </div>
+                            <div class="flex flex-column gap-2">
+                                <label htmlFor="address" class="form-label">Address</label>
+                                <input pInputText id="address" name="address" [(ngModel)]="formData.address" />
+                            </div>
+                            <div class="flex flex-column gap-2">
+                                <label htmlFor="suburb" class="form-label">Suburb</label>
+                                <input pInputText id="suburb" name="suburb" [(ngModel)]="formData.suburb" />
+                            </div>
+
+                            <div class="flex flex-column gap-2">
+                                <label htmlFor="postCode" class="form-label">Post Code</label>
+                                <input pInputText id="postCode" name="postCode" [(ngModel)]="formData.postCode" />
+                            </div>
+                            <div class="flex flex-column gap-2">
+                                <label htmlFor="specialNotes" class="form-label">Special Notes</label>
+                                <textarea rows="3" cols="30" name="specialNotes" pInputTextarea
+                                    [(ngModel)]="formData.specialNotes"></textarea>
+                            </div>
+                        </p-card>
                     </div>
-                </div>               
+                </div>
+                <div *ngIf="activeStepIndex === 3">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-lg-12 pt-5">
+                            <h2>Total Amount: <span id="spPrice">{{selectedServicePrice +
+                                    this.otherServicesPrice}}</span></h2>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12 pt-5">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+
+            </form>
+            <div class="pt-5">
+                <p-button (click)="goToPreviousStep()" *ngIf="activeStepIndex > 0" label="Previous"
+                    icon="pi pi-angle-left" styleClass="p-button-secondary"></p-button> &nbsp;
+                <p-button (click)="goToNextStep()" *ngIf="activeStepIndex < bookingSteps.length-1" label="Next"
+                    icon="pi pi-angle-right"></p-button>
             </div>
-            <div class="col-sm-12 col-md-12 col-lg-12 pt-5">
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-        </form>
+        </p-fieldset>
+
     </div>
 </div>

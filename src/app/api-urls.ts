@@ -36,6 +36,8 @@ export const API_URLS = {
     LOAD_LOGIN_USER: `${API_BASE_URL}/login/LoginUser`,
 
     LOAD_BOOKING_SERVICE_WISE_CATERORY: `${API_BASE_URL}/ServicePrice/GetServiceWisePrice`,
+    LOAD_BOOKING_OTHER_SERVICES: `${API_BASE_URL}/Booking/GetOtherServices`,
+    SAVE_UPDATE_BOOKING: `${API_BASE_URL}/Booking/SaveUpdateBooking`,
 
     Service_Category_Price_Get_All_Data: `${API_BASE_URL}/ServiceCategoryPrice/GetAllData`,
     Service_Category_Price_Save_Update_Data: `${API_BASE_URL}/ServiceCategoryPrice/SaveUpdateData`,

@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import { NgForm } from '@angular/forms';
 import { API_URLS } from '../api-urls';
 import { SweetAlertService } from '../sweet-alert.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-service-price-parent',
@@ -15,7 +16,7 @@ export class ServicePriceParentComponent implements OnInit {
   dataSource: any[] = [];
   
 
-  constructor(private http: HttpClient, private sweetAlertService: SweetAlertService) { }
+  constructor(private http: HttpClient, private sweetAlertService: SweetAlertService,private router: Router) { }
 
   ngOnInit() {
     this.loadData();
@@ -32,4 +33,15 @@ export class ServicePriceParentComponent implements OnInit {
     });
   }
 
+  // BookService(id:number){
+  //   console.log(id);
+  //   const navigationExtras: NavigationExtras = {
+  //     state: {
+  //       id: '123',
+  //       additionalInfo: 'Some additional information'
+  //     }
+  //   };
+    
+  //   this.router.navigate(['/detail'], navigationExtras);
+  // }
 }

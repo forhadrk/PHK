@@ -9,6 +9,16 @@ import { StoreModule } from '@ngrx/store';
 import { authReducer } from './auth.state';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './auth.effects';
+import { FieldsetModule } from 'primeng/fieldset';
+import { DropdownModule } from 'primeng/dropdown';
+import { CalendarModule } from 'primeng/calendar';
+import { StepsModule } from 'primeng/steps';
+import { CardModule } from 'primeng/card';
+import { InputTextModule } from 'primeng/inputtext';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { ButtonModule } from 'primeng/button';
+import { CheckboxModule } from 'primeng/checkbox';
+import { DividerModule } from 'primeng/divider';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -88,7 +98,17 @@ import { DialogContentComponent } from './dialog-content/dialog-content.componen
     EffectsModule.forRoot([AuthEffects]), 
     IonicModule.forRoot(),
     LightboxModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FieldsetModule,
+    DropdownModule,
+    CalendarModule,
+    StepsModule,
+    CardModule,
+    InputTextModule,
+    InputTextareaModule,
+    ButtonModule,
+    CheckboxModule,
+    DividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

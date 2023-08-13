@@ -1,0 +1,23 @@
+p-dropdown{
+    display: grid;
+}
+
+.p-card {
+    border-top: 2px solid #ddd;
+}
+
+.p-inputtext {
+    margin: 0;
+    width: 100%;
+}
+
+.lblBookingDate{
+    width: 100%;
+}
+
+.chklabel{
+    margin-left: 10px;;
+}
+.p-calendar{
+    width: 100% !important;
+}

@@ -19,6 +19,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ButtonModule } from 'primeng/button';
 import { CheckboxModule } from 'primeng/checkbox';
 import { DividerModule } from 'primeng/divider';
+import {ToastModule} from 'primeng/toast';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -53,7 +54,11 @@ import { ServiceCategoryPriceDetailsComponent } from './service-category-price-d
 import { UsersComponent } from './users/users.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DialogContentComponent } from './dialog-content/dialog-content.component';
-
+import { PaymentProcessComponent } from './payment-process/payment-process.component';
+import { PaymentSuccessComponent } from './payment-success/payment-success.component';
+import { CommentsDetailsComponent } from './comments-details/comments-details.component';
+import { BookingDetailsComponent } from './booking-details/booking-details.component';
+import { AuthServiceComponent } from './auth-service/auth-service.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -86,7 +91,12 @@ import { DialogContentComponent } from './dialog-content/dialog-content.componen
     ServiceCategoryPriceComponent,
     ServiceCategoryPriceDetailsComponent,
     UsersComponent,
-    DialogContentComponent    
+    DialogContentComponent,
+    PaymentProcessComponent,
+    PaymentSuccessComponent,
+    CommentsDetailsComponent,
+    BookingDetailsComponent,
+    AuthServiceComponent
   ],
   imports: [
     BrowserModule,
@@ -108,9 +118,10 @@ import { DialogContentComponent } from './dialog-content/dialog-content.componen
     InputTextareaModule,
     ButtonModule,
     CheckboxModule,
-    DividerModule
+    DividerModule,
+    ToastModule
   ],
-  providers: [],
+  providers: [],  
   bootstrap: [AppComponent]
 })
 export class AppModule { }

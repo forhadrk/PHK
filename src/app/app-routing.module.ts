@@ -21,6 +21,10 @@ import { BookingComponent } from './booking/booking.component';
 import { ServiceCategoryPriceComponent } from './service-category-price/service-category-price.component';
 import { ServiceCategoryPriceDetailsComponent } from './service-category-price-details/service-category-price-details.component';
 import { UsersComponent } from './users/users.component';
+import { PaymentProcessComponent } from './payment-process/payment-process.component';
+import { PaymentSuccessComponent } from './payment-success/payment-success.component';
+import { CommentsDetailsComponent } from './comments-details/comments-details.component';
+import { BookingDetailsComponent } from './booking-details/booking-details.component';
 
 const routes: Routes = [
   {path:'', component:HomeComponent},
@@ -44,6 +48,10 @@ const routes: Routes = [
   {path:'ServiceCategoryPrice', component:ServiceCategoryPriceComponent},
   {path:'ServiceCategoryPriceDetails', component:ServiceCategoryPriceDetailsComponent},
   {path:'users', component:UsersComponent},
+  {path:'payment', component:PaymentProcessComponent},
+  {path:'success', component:PaymentSuccessComponent},
+  {path:'comments', component:CommentsDetailsComponent},
+  {path:'bookinginfo', component:BookingDetailsComponent},
 ];
 
 @NgModule({

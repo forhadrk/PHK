@@ -21,3 +21,29 @@ p-dropdown{
 .p-calendar{
     width: 100% !important;
 }
+
+.required {
+    content: "*";
+    color: red; /* You can adjust the color to your preference */
+    margin-right: 4px; /* Add spacing between the asterisk and the text */
+  }
+
+  .spSummary{
+    font-weight: 600;
+    font-size: 1.2rem;
+  }
+
+  .spPaymentTotal{
+    display: block;
+  }
+
+  .hidden {
+    display: none;
+  }
+  
+  .paymentButtonInfo{
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 15px;
+  }

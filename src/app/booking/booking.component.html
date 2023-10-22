@@ -1,23 +1,16 @@
-<!-- <div class="container-fluid pt-5">
-    <div class="container">
-        <div class="row text-center">
-            <h1><strong>Book a House Cleaning</strong> </h1>
-        </div>
-    </div>
-</div> -->
 <div class="container-fluid pt-5">
     <div class="container">
         <p-fieldset legend="Book Your Service">
             <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
                 <p-steps [model]="bookingSteps" [readonly]="true" [(activeIndex)]="activeStepIndex"></p-steps>
-
                 <div *ngIf="activeStepIndex === 0" class="pb-5">
                     <div class="row pt-2">
                         <p-card>
                             <div class="row">
                                 <div class="col-sm-12 col-md-4 col-lg-4">
                                     <div class="form-group">
-                                        <label for="servicesID" class="form-label">Service Name</label>
+                                        <label for="servicesID" class="form-label">Service Name<span
+                                                class="required">*</span></label>
                                         <p-dropdown [options]="dataServices" [(ngModel)]="formData.servicesID"
                                             placeholder="Select a Service" optionValue="servicesID"
                                             optionLabel="serviceName" name="servicesID"
@@ -27,7 +20,8 @@
                                 </div>
                                 <div class="col-sm-12 col-md-4 col-lg-4">
                                     <div class="form-group">
-                                        <label for="categoryPriceID" class="form-label">Select an option</label>
+                                        <label for="categoryPriceID" class="form-label">Select an option<span
+                                                class="required">*</span></label>
                                         <p-dropdown [options]="dataServicesPrice" [(ngModel)]="formData.categoryPriceID"
                                             placeholder="Select Option" optionValue="categoryPriceID"
                                             optionLabel="title" name="categoryPriceID"
@@ -35,9 +29,16 @@
                                         </p-dropdown>
                                     </div>
                                 </div>
+                                <div class="col-sm-12 col-md-4 col-lg-4">
+                                    <div class="form-group">
+                                        <label for="totalPrice" class="form-label">Price(AUD)</label>
+                                        <input pInputText id="totalPrice" name="totalPrice"
+                                            [(ngModel)]="formData.totalPrice" disabled />
+                                    </div>
+                                </div>
                             </div>
                             <div class="row pt-5">
-                                <h4><strong>Services You Can Include With Additional Fee</strong></h4>
+                                <h6><strong>Services You Can Include With Additional Fee</strong></h6>
                                 <p-divider></p-divider>
                                 <div class="col-sm-12 col-md-4 col-lg-4">
                                     <div *ngFor="let services of dataBookingServices" class="field-checkbox pb-2">
@@ -52,17 +53,18 @@
                         </p-card>
                     </div>
                 </div>
-
                 <div *ngIf="activeStepIndex === 1">
                     <p-card>
-                        <div class="row">
+                        <div class="row pt-2">
                             <div class="col-sm-12 col-md-6 col-lg-6">
-                                <label for="bookingDate" class="form-label lblBookingDate">Booking Date</label>
+                                <label for="bookingDate" class="form-label lblBookingDate">Booking Date<span
+                                        class="required">*</span></label>
                                 <p-calendar class="max-w-full" [(ngModel)]="formData.bookingDate" [inline]="true"
                                     [showWeek]="true" [minDate]="formData.bookingDate" name="bookingDate"></p-calendar>
                             </div>
                             <div class="col-sm-12 col-md-6 col-lg-6">
-                                <label for="bookingHour" class="form-label">Booking Time</label>
+                                <label for="bookingHour" class="form-label">Booking Time<span
+                                        class="required">*</span></label>
                                 <p-dropdown [options]="databookingHours" name="databookingHours"
                                     [(ngModel)]="formData.bookingHour" optionValue="code" optionLabel="name">
                                 </p-dropdown>
@@ -70,34 +72,36 @@
                         </div>
                     </p-card>
                 </div>
-
-                <div *ngIf="activeStepIndex === 2">
+                <div *ngIf="activeStepIndex === 2" class="pb-5">
                     <div class="row">
                         <p-card>
                             <div class="flex flex-column gap-2">
-                                <label htmlFor="bookingName" class="form-label">First and Last Name</label>
+                                <label htmlFor="bookingName" class="form-label">First and Last Name<span
+                                        class="required">*</span></label>
                                 <input pInputText id="bookingName" name="bookingName"
                                     [(ngModel)]="formData.bookingName" />
                             </div>
                             <div class="flex flex-column gap-2">
-                                <label htmlFor="email" class="form-label">Email</label>
+                                <label htmlFor="email" class="form-label">Email<span class="required">*</span></label>
                                 <input pInputText id="email" name="email" [(ngModel)]="formData.email" />
                             </div>
                             <div class="flex flex-column gap-2">
-                                <label htmlFor="suburb" class="form-label">Mobile</label>
+                                <label htmlFor="suburb" class="form-label">Mobile<span class="required">*</span></label>
                                 <input pInputText id="mobile" name="mobile" [(ngModel)]="formData.mobile" />
                             </div>
                             <div class="flex flex-column gap-2">
-                                <label htmlFor="address" class="form-label">Address</label>
+                                <label htmlFor="address" class="form-label">Street Name<span
+                                        class="required">*</span></label>
                                 <input pInputText id="address" name="address" [(ngModel)]="formData.address" />
                             </div>
                             <div class="flex flex-column gap-2">
-                                <label htmlFor="suburb" class="form-label">Suburb</label>
+                                <label htmlFor="suburb" class="form-label">Suburb<span class="required">*</span></label>
                                 <input pInputText id="suburb" name="suburb" [(ngModel)]="formData.suburb" />
                             </div>
 
                             <div class="flex flex-column gap-2">
-                                <label htmlFor="postCode" class="form-label">Post Code</label>
+                                <label htmlFor="postCode" class="form-label">Post Code<span
+                                        class="required">*</span></label>
                                 <input pInputText id="postCode" name="postCode" [(ngModel)]="formData.postCode" />
                             </div>
                             <div class="flex flex-column gap-2">
@@ -108,18 +112,99 @@
                         </p-card>
                     </div>
                 </div>
-                <div *ngIf="activeStepIndex === 3">
-                    <div class="row">
-                        <div class="col-sm-12 col-md-12 col-lg-12 pt-5">
-                            <h2>Total Amount: <span id="spPrice">{{selectedServicePrice +
-                                    this.otherServicesPrice}}</span></h2>
-                        </div>
-                    </div>
+                <div *ngIf="activeStepIndex === 3" class="pb-5">
                     <div class="col-sm-12 col-md-12 col-lg-12 pt-5">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <p class="mb-0"><span class="spSummary mb-1">Name: </span>{{this.formData.bookingName}}
+                                </p>
+                            </li>
+                            <li class="list-group-item">
+                                <p class="mb-0"><span class="spSummary mb-1">Email: </span> {{this.formData.email}}</p>
+                            </li>
+                            <li class="list-group-item">
+                                <p class="mb-0"><span class="spSummary mb-1">Mobile: </span> {{this.formData.mobile}}
+                                </p>
+                            </li>
+                            <li class="list-group-item">
+
+                                <p class="mb-0"><span class="spSummary mb-1">Address: </span>
+                                    {{this.formData.address}},{{this.formData.suburb}},{{this.formData.postCode}}</p>
+                            </li>
+                            <li class="list-group-item">
+                                <p class="mb-0"><span class="spSummary mb-1">Service Name:
+                                    </span>{{this.summaryServiceNames}}</p>
+                            </li>
+                            <li class="list-group-item">
+                                <p class="mb-0"><span class="spSummary mb-1">Service Details:
+                                    </span>{{this.summaryServicePriceName}}</p>
+                            </li>
+                            <li class="list-group-item">
+                                <p class="mb-0"><span class="spSummary mb-1">Service Date: </span>
+                                    {{this.formData.serviceDate}}</p>
+                            </li>
+                            <li class="list-group-item">
+                                <p class="mb-0"><span class="spSummary mb-1">Start Time: </span>
+                                    {{this.formData.bookingHour}}</p>
+                            </li>
+                            <li class="list-group-item">
+                                <p class="mb-0"><span class="spSummary mb-1">Total Payment (AUD): </span>
+                                    <span>${{selectedServicePrice + this.otherServicesPrice}}</span>
+                                </p>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-
+                <div *ngIf="activeStepIndex === 4" class="pb-5">
+                    <div class="row">
+                        <p-card>
+                            <div class="col-sm-12 col-md-12 col-lg-12 pb-5">
+                                <a class="btn btn-outline-primary" (click)="PaymentInfo()">{{paymentButtonText}}</a>
+                            </div>
+                            <div [ngClass]="{'hidden': isNowPayment}">
+                                <div class="flex flex-column gap-2 col-sm-12 col-md-4 col-lg-4">
+                                    <label htmlFor="cardName" class="form-label">Card Name<span
+                                            class="required">*</span></label>
+                                    <input pInputText id="cardName" name="cardName" [(ngModel)]="formData.cardName" />
+                                </div>
+                                <div class="flex flex-column gap-2 col-sm-12 col-md-4 col-lg-4">
+                                    <label htmlFor="cardNumber" class="form-label">Card Number<span
+                                            class="required">*</span></label>
+                                    <input pInputText id="cardNumber" name="cardNumber"
+                                        [(ngModel)]="formData.cardNumber" maxlength="20" />
+                                </div>
+                                <div class="flex flex-column gap-2 col-sm-12 col-md-4 col-lg-4">
+                                    <label htmlFor="expiryMonth" class="form-label">Expiry Month<span
+                                            class="required">*</span></label>
+                                    <p-dropdown [options]="dataCardMonthNo" [(ngModel)]="formData.expiryMonth"
+                                        optionValue="ID" optionLabel="Name" name="expiryMonth">
+                                    </p-dropdown>
+                                </div>
+                                <div class="flex flex-column gap-2 col-sm-12 col-md-4 col-lg-4">
+                                    <label htmlFor="expiryYear" class="form-label">Expiry Year<span
+                                            class="required">*</span></label>
+                                    <p-dropdown [options]="dataCardYearNo" [(ngModel)]="formData.expiryYear"
+                                        optionValue="ID" optionLabel="Name" name="expiryYear">
+                                    </p-dropdown>
+                                </div>
+                                <div class="flex flex-column gap-2 col-sm-12 col-md-4 col-lg-4">
+                                    <label htmlFor="cvcNo" class="form-label">CVC<span class="required">*</span></label>
+                                    <input pInputText id="cvcNo" name="cvcNo" [(ngModel)]="formData.cvcNo"
+                                        maxlength="4" />
+                                </div>
+                                <div class="flex flex-column gap-2 col-sm-12 col-md-4 col-lg-4">
+                                    <label for="finalPrice" class="form-label">Total Amount(AUD)</label>
+                                    <input pInputText id="finalPrice" name="finalPrice"
+                                        [(ngModel)]="formData.finalPrice" disabled />
+                                </div>
+                            </div>
+                        </p-card>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12 pt-5">
+                        <button type="submit" class="btn btn-primary" [disabled]="isProcessing">{{ isProcessing ?
+                            'Processing...' : 'Submit' }}</button>
+                    </div>
+                </div>
             </form>
             <div class="pt-5">
                 <p-button (click)="goToPreviousStep()" *ngIf="activeStepIndex > 0" label="Previous"
@@ -128,6 +213,5 @@
                     icon="pi pi-angle-right"></p-button>
             </div>
         </p-fieldset>
-
     </div>
 </div>

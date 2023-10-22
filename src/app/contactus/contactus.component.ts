@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import Swal from 'sweetalert2';
+//import Swal from 'sweetalert2';
 import { NgForm } from '@angular/forms';
 import { API_URLS } from '../api-urls';
+import { SweetAlertService } from '../sweet-alert.service';
 
 @Component({
   selector: 'app-contactus',
@@ -21,32 +22,44 @@ export class ContactusComponent implements OnInit {
     message: ''
   };
 
-  constructor(private http: HttpClient) { }
+  formReviewData = {
+    name: '',
+    message: ''
+  };
+
+  constructor(private http: HttpClient, private sweetAlertService: SweetAlertService) { }
 
   ngOnInit() {
 
   }
 
   onSubmit(form: NgForm) {
-    console.log(this.formData);
     if (!form.invalid) {
       this.http.post(API_URLS.Contact_Save_Update_Data, this.formData)
         .subscribe(
           () => {
-            Swal.fire(
-              'Good job!',
-              'Data Process Successfully!',
-              'success'
-            );
+            this.sweetAlertService.showSuccessPopupAlert('Data Process Successfully..!');
             this.resetForm();
           },
           (error) => {
-            Swal.fire({
-              icon: 'error',
-              title: 'Oops...',
-              text: 'Something went wrong!',
-              footer: ''
-            })
+            this.sweetAlertService.showErrorAlert('Something went wrong!');
+            console.log(error);
+          }
+        );
+    }
+  }
+  onReviewSubmit(form: NgForm) {
+    console.log(this.formReviewData);
+    if (!form.invalid) {
+      this.http.post(API_URLS.Save_User_Comments, this.formReviewData)
+        .subscribe(
+          () => {
+            this.sweetAlertService.showSuccessPopupAlert('Your Comments Save Successfully!');
+            this.formReviewData.name = "";
+            this.formReviewData.message = "";
+          },
+          (error) => {
+            this.sweetAlertService.showErrorAlert('Something went wrong!');
             console.log(error);
           }
         );

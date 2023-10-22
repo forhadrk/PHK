@@ -1,0 +1,51 @@
+<app-entry-modal [header]="modalTitle" [visible]="showModal">
+    <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+        <div class="form-group">
+            <label for="name">Name</label>        
+            <input type="text" class="form-control" id="name" [(ngModel)]="formData.name" name="name" required />   
+            <input type="hidden" id="commentsID" [(ngModel)]="formData.commentsID" name="commentsID" />
+        </div>
+        <div class="form-group">
+            <label for="message">Message</label>
+            <textarea class="form-control" id="message" [(ngModel)]="formData.message" rows="5" name="message" required></textarea>
+        </div>               
+        <div class="form-group pt-2 d-flex justify-content-between">
+            <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid">{{saveUpdate}}</button>
+            <a class="btn btn-danger float-right" (click)="toggleModal()">Close</a>
+        </div>
+    </form>
+</app-entry-modal>
+
+<div class="container">
+    <p-table [value]="dataSource" [tableStyle]="{ 'min-width': '50rem' }"  [paginator]="true" [rows]="10"
+    [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [rowsPerPageOptions]="[10,25,50]">
+        <ng-template pTemplate="caption">
+            <div class="flex align-items-center justify-content-between">
+                <button type="button" class="btn btn-primary" (click)="toggleModal()"><ion-icon size="large"
+                        name="add-circle-outline"></ion-icon></button>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th class="hidden">ID</th>
+                <th>Name</th>
+                <th>Message</th>
+                <th class="th-center">Action</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-dataSource>
+            <tr>
+                <td class="hidden">{{ dataSource.commentsID }}</td>
+                <td>{{ dataSource.name }}</td>
+                <td>{{ dataSource.message }}</td>
+                <td class="td-center tdAction">
+                    <button type="button" class="btn btn-success" (click)="GetEditData(dataSource)"><ion-icon
+                            name="pencil-outline"></ion-icon></button>
+                    <button type="button" class="btn btn-danger ml-2" (click)="DeleteRowData(dataSource)"><ion-icon
+                            name="trash-outline"></ion-icon></button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

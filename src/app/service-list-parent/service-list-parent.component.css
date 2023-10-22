@@ -1,21 +1,25 @@
 .divService1  {
-    background-image: url(/assets/Services/Kitchen.jpeg);
+    background-image: url(/assets/Services/Bathroom.jpg);
     padding: 50px;
+    min-height: 700px;
 }
 
 .divService2  {
     background-image: url(/assets/Services/Bedroom.jpg);
     padding: 50px;
+    min-height: 700px;
 }
 
 .divService3  {
     background-image: url(/assets/Services/Kitchen.jpg);
     padding: 50px;
+    min-height: 700px;
 }
 
 .divService4  {
-    background-image: url(/assets/Services/Kitchen.jpeg);
+    background-image: url(/assets/Services/Laundry.jpg);
     padding: 50px;
+    min-height: 700px;
 }
 
 .divService5  {

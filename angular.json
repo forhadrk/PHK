@@ -11,8 +11,9 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:browser-esbuild",
           "options": {
+            "allowedCommonJsDependencies": ["file-saver"],
             "outputPath": "dist/perthhousekeeping",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -25,29 +26,27 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/primeicons/primeicons.css",
-              "node_modules/primeng/resources/themes/saga-blue/theme.css",
-              "node_modules/primeng/resources/primeng.min.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [         
+            ]
           },
           "configurations": {
-            "production": {
+            "production": {              
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
+                  "maximumWarning": "20mb",
+                  "maximumError": "50mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
+                  "maximumWarning": "20mb",
+                  "maximumError": "50mb"
                 }
               ],
               "outputHashing": "all"
-            },
+            },            
             "development": {
               "buildOptimizer": false,
               "optimization": false,
@@ -56,7 +55,7 @@
               "sourceMap": true,
               "namedChunks": true
             }
-          },
+          },          
           "defaultConfiguration": "production"
         },
         "serve": {
@@ -89,13 +88,11 @@
               "src/favicon.ico",
               "src/assets"
             ],
-            "styles": [
-              "node_modules/primeicons/primeicons.css",
-              "node_modules/primeng/resources/themes/saga-blue/theme.css",
-              "node_modules/primeng/resources/primeng.min.css",
+            "styles": [     
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+            ]
           }
         }
       }

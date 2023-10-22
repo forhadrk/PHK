@@ -20,6 +20,7 @@ export const API_URLS = {
     Contact_Save_Update_Data: `${API_BASE_URL}/Contact/SaveUpdateData`,
     Contact_Get_Edit_Data: `${API_BASE_URL}/Contact/GetSelectedData`,
     Contact_Delete_Selected_Data: `${API_BASE_URL}/Contact/DeleteSelectedData`,
+    Save_User_Comments: `${API_BASE_URL}/Contact/SaveCommentDate`,
 
     Category_Wise_Service_Name_Data: `${API_BASE_URL}/ServicePrice/GetServiceNames`,
     Category_Wise_Service_Save_Data: `${API_BASE_URL}/ServicePrice/SaveCategoryWiseService`,
@@ -38,6 +39,7 @@ export const API_URLS = {
     LOAD_BOOKING_SERVICE_WISE_CATERORY: `${API_BASE_URL}/ServicePrice/GetServiceWisePrice`,
     LOAD_BOOKING_OTHER_SERVICES: `${API_BASE_URL}/Booking/GetOtherServices`,
     SAVE_UPDATE_BOOKING: `${API_BASE_URL}/Booking/SaveUpdateBooking`,
+    LOAD_BOOKING_DETAILS: `${API_BASE_URL}/Booking/GetAllBookingDetails`,
 
     Service_Category_Price_Get_All_Data: `${API_BASE_URL}/ServiceCategoryPrice/GetAllData`,
     Service_Category_Price_Save_Update_Data: `${API_BASE_URL}/ServiceCategoryPrice/SaveUpdateData`,
@@ -54,5 +56,10 @@ export const API_URLS = {
     Users_Save_Update_Data: `${API_BASE_URL}/users/SaveUpdateData`,
     Users_Get_Edit_Data: `${API_BASE_URL}/users/GetSelectedData`,
     Users_Delete_Selected_Data: `${API_BASE_URL}/users/DeleteSelectedData`,
+
+    Comments_Get_All_Data: `${API_BASE_URL}/comments/GetAllData`,
+    Comments_Save_Update_Data: `${API_BASE_URL}/comments/SaveUpdateData`,
+    Comments_Get_Edit_Data: `${API_BASE_URL}/comments/GetSelectedData`,
+    Comments_Delete_Selected_Data: `${API_BASE_URL}/comments/DeleteSelectedData`,
     
   };

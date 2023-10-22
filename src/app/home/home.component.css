@@ -202,3 +202,8 @@
     margin-bottom: 50px;
     background-image: url(/assets/Background/Background.jpg);
 }
+
+.serviceTitle a{
+    color: #fff;
+    text-decoration: none;
+}

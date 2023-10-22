@@ -1,4 +1,5 @@
-import { Component,Injectable, ChangeDetectorRef  } from '@angular/core';
+import { Component,Injectable, OnInit  } from '@angular/core';
+import { AuthServiceComponent } from '../auth-service/auth-service.component';
 
 @Component({
   selector: 'app-header',
@@ -10,31 +11,30 @@ import { Component,Injectable, ChangeDetectorRef  } from '@angular/core';
   providedIn: 'root',
 })
 
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
+  constructor(private authService: AuthServiceComponent) {}
   userLoggedData: any;
-  isLoggedIn: boolean = true;
 
-  // storedUserData:any = localStorage.getItem('userData');
-  // this.userData = this.storedUserData ? JSON.parse(this.storedUserData) : null;  
-
-  // if(userData:any) {
-  //   this.isLoggedIn = false;
-  // }  
-
-  //constructor(private cdr: ChangeDetectorRef) {}
-
-  userDataString = localStorage.getItem('userData');
+  public isLoggedIn: boolean = false;
 
   ngOnInit() {
+    this.authService.isLoggedIn$.subscribe((isLoggedIn) => {
+      this.isLoggedIn = isLoggedIn;
+    });
+    console.log(this.isLoggedIn);
 
-    console.log('Header Here');
-    //const userDataString = localStorage.getItem('userData');
-
-    if (this.userDataString) {
-      this.isLoggedIn = false;
-      this.userLoggedData = JSON.parse(this.userDataString);
+    const data = localStorage.getItem('loginDetails');
+    console.log('Data:', data);
+    if (data !== null) {
+      this.authService.isLoggedIn$.subscribe((isLoggedIn) => {
+        this.isLoggedIn = true;
+      });
+      console.log('Data exists:', data);
+    } else {
+      this.authService.isLoggedIn$.subscribe((isLoggedIn) => {
+        this.isLoggedIn = false;
+      });
+      console.log('Data does not exist in localStorage.');
     }
-
-    //this.cdr.detectChanges();
   }
 }

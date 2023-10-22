@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { loginSuccess } from '../auth.actions';
 import { AuthState } from '../auth.state'; 
+import { BehaviorSubject } from 'rxjs';
+import { AuthServiceComponent } from '../auth-service/auth-service.component';
 
 @Component({
   selector: 'app-login',
@@ -18,15 +20,18 @@ import { AuthState } from '../auth.state';
 export class LoginComponent {
   formData: any = {}; // Object to store the form data
 
+  private isLoggedInSubject = new BehaviorSubject<boolean>(false);
+  isLoggedIn$ = this.isLoggedInSubject.asObservable();
+
   constructor(private http: HttpClient, 
     private sweetAlertService: SweetAlertService,
     private headerComponent: HeaderComponent, 
     private router: Router,
-    private store: Store) { }
+    private store: Store,
+    private authService: AuthServiceComponent) { }
 
   onLoginSubmit():void {
-    // You can perform any login API call here using the formData
-    console.log('Login form submitted:', this.formData);
+    //console.log('Login form submitted:', this.formData);
 
     this.http.post(API_URLS.LOAD_LOGIN_USER, this.formData).subscribe((response: any) => {
 
@@ -35,32 +40,11 @@ export class LoginComponent {
       if(_length > 0)
       {
         const seccessData = response;
-        console.log(seccessData);
-        //localStorage.setItem('userData', JSON.stringify(seccessData));
-
-        //this.headerComponent.ngOnInit();
-
-        // const userData = {
-        //   loginUserID: seccessData.loginUserID,
-        //   userName: seccessData.userName,
-        //   name: seccessData.name,
-        //   email: seccessData.userName,
-        //   token: seccessData.userName,
-        // };
-
-        const userData = {
-          loginUserID: 'user_id_here',
-          userName: 'example_user',
-          name: 'John Doe',
-          email: 'user@example.com',
-          token: 'your_generated_jwt_token_here',
-        };
-
-        console.log(userData);
-        this.store.dispatch(loginSuccess(userData));
-        //this.store.dispatch(new loginSuccess(userData));
-
-        //this.router.navigate(['/dashboard']);
+        console.log('Login Success:',seccessData);
+        localStorage.setItem('loginDetails', JSON.stringify(seccessData));
+        
+        this.authService.setLoggedIn(true);
+        this.router.navigate(['/dashboard']);
       }      
     });
     

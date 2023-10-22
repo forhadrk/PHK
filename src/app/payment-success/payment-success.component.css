@@ -1,0 +1,22 @@
+.successContainer {
+    text-align: center;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .icon {
+    color: #36ab57;
+    font-size: 48px;
+  }
+
+  .message {
+    margin-top: 20px;
+    font-size: 24px;
+  }
+
+  img, svg {
+    vertical-align: middle;
+    width: 100px;
+}

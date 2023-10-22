@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 import { API_URLS } from '../api-urls';
 import { SweetAlertService } from '../sweet-alert.service';
@@ -13,7 +13,7 @@ import { logout } from '../auth.actions';
   styleUrls: ['./save-services.component.css']
 })
 export class SaveServicesComponent implements OnInit {
-
+  loginDetails: any;
   isLoggedIn = false;
   token: string | null = null;
 
@@ -22,11 +22,19 @@ export class SaveServicesComponent implements OnInit {
       this.store.select('auth').subscribe((state) => {
         console.log(state.email);
       });
+
+      const storedLoginDetails = localStorage.getItem('loginDetails');
+
+      if (storedLoginDetails) {
+        this.loginDetails = JSON.parse(storedLoginDetails);
+        this.token  = this.loginDetails.token;
+        console.log("Login Storage: ",this.loginDetails);
+        console.log("Token: ", this.token);
+      }
   }
 
   dataSource: any[] = [];
-    formData = {
-      
+    formData = {      
       servicesID:0,
       serviceName: '',
       serviceInfo: '',
@@ -46,17 +54,25 @@ export class SaveServicesComponent implements OnInit {
     }
 
     loadData() {
-      this.http.get(API_URLS.Service_Name_Get_All_Data).subscribe((response: any) => {       
+      const headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this.token}`
+      });
+      this.http.get(API_URLS.Service_Name_Get_All_Data, { headers }).subscribe((response: any) => {       
         this.dataSource = response;
         console.log(this.dataSource);
       });
     }
   
     onSubmit(form: NgForm) {
-      //console.log(this.formData);
+      const headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this.token}`
+      });
+
       if (!form.invalid) {
       this.isSaving = true;
-      this.http.post(API_URLS.Service_Name_Save_Update_Data, this.formData)
+      this.http.post(API_URLS.Service_Name_Save_Update_Data, this.formData, { headers })
         .subscribe(
           () => {
             this.sweetAlertService.showSuccessPopupAlert('Data Process Successfully!');

@@ -18,6 +18,6 @@ export class AuthServiceComponent {
 
   setLoggedIn(value: boolean) {
     //this.isLoggedInSubject$.next(value);
-    this.isLoggedIn$.next(true);
+    this.isLoggedIn$.next(value);
   }
 }

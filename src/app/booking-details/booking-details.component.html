@@ -1,34 +1,27 @@
-<div class="container">
-    <p-table [value]="dataSource" [tableStyle]="{ 'min-width': '50rem' }"  [paginator]="true" [rows]="10"
+<div class="container bookingGrd">
+    <p-table [value]="dataSource" [resizableColumns]="true" [tableStyle]="{ 'min-width': '50rem' }"  [paginator]="true" [rows]="10"
     [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-    [rowsPerPageOptions]="[10,25,50]">
-        <ng-template pTemplate="caption">
-            <div class="flex align-items-center justify-content-between">
-                <!-- <button type="button" class="btn btn-primary" (click)="toggleModal()"><ion-icon size="large"
-                        name="add-circle-outline"></ion-icon></button> -->
-            </div>
-        </ng-template>
+    [rowsPerPageOptions]="[10,25,50]">       
         <ng-template pTemplate="header">
             <tr>
                 <th class="hidden">BookingMasterID</th>
                 <th class="hidden">CategoryPriceID</th>
                 <th class="hidden">ServicesID</th>
-                <th [style.width.%]="20">BookingID</th>
-                <th>Price Info</th>
-                <th>ServiceName</th>
+                <th [style.width.%]="25">Booking ID</th>
+                <th>Booing For</th>
+                <th>Service Name</th>
                 <th>Service Date</th>
                 <th>Booking Hour</th>
-                <th>City</th>
-                <th>BookingName</th>
+                <th class="hidden">City</th>
+                <th>Booking Name</th>
                 <th>Email</th>
                 <th>Mobile</th>
                 <th>Address</th>
-
                 <th>Suburb</th>
-                <th>PostCode</th>
-                <th>SpecialNotes</th>
-                <th>TotalPrice</th>
-                <th>TransactionID</th>
+                <th>Post Code</th>                
+                <th>Total Price</th>
+                <th>Trans ID</th>
+                <th>Notes</th>
 
                 <!-- <th class="th-center">Action</th> -->
             </tr>
@@ -43,16 +36,16 @@
                 <td>{{ dataSource.serviceName }}</td>
                 <td>{{ dataSource.serviceDate }}</td>
                 <td>{{ dataSource.bookingHour }}</td>
-                <td>{{ dataSource.city }}</td>
+                <td class="hidden">{{ dataSource.city }}</td>
                 <td>{{ dataSource.bookingName }}</td>
                 <td>{{ dataSource.email }}</td>
                 <td>{{ dataSource.mobile }}</td>
                 <td>{{ dataSource.address }}</td>
                 <td>{{ dataSource.suburb }}</td>
-                <td>{{ dataSource.postCode }}</td>
-                <td>{{ dataSource.specialNotes }}</td>
+                <td>{{ dataSource.postCode }}</td>                
                 <td>{{ dataSource.totalPrice }}</td>
                 <td>{{ dataSource.transactionID }}</td>
+                <td>{{ dataSource.specialNotes }}</td>
 
                 <!-- <td class="td-center tdAction">
                     <button type="button" class="btn btn-success" (click)="GetEditData(dataSource)"><ion-icon

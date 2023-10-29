@@ -19,6 +19,7 @@ import { AuthServiceComponent } from '../auth-service/auth-service.component';
 })
 export class LoginComponent {
   formData: any = {}; // Object to store the form data
+  loginBtnName:string = "Login";
 
   private isLoggedInSubject = new BehaviorSubject<boolean>(false);
   isLoggedIn$ = this.isLoggedInSubject.asObservable();
@@ -31,22 +32,34 @@ export class LoginComponent {
     private authService: AuthServiceComponent) { }
 
   onLoginSubmit():void {
+    this.loginBtnName = "Wait Processing...";
     //console.log('Login form submitted:', this.formData);
 
-    this.http.post(API_URLS.LOAD_LOGIN_USER, this.formData).subscribe((response: any) => {
-
-      const _length = Object.entries(response).length;
-
-      if(_length > 0)
-      {
+    this.http.post(API_URLS.LOAD_LOGIN_USER, this.formData).subscribe((response: any) => {     
         const seccessData = response;
-        console.log('Login Success:',seccessData);
-        localStorage.setItem('loginDetails', JSON.stringify(seccessData));
-        
+        localStorage.setItem('loginDetails', JSON.stringify(seccessData));        
         this.authService.setLoggedIn(true);
-        this.router.navigate(['/dashboard']);
-      }      
-    });
+        this.router.navigate(['/dashboard']);           
+    },
+    (error) => {
+      if (error.status === 401) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Check your Email and Password!',
+          footer: ''
+        });
+        this.loginBtnName = "Login";
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong. Please try again..!',
+          footer: ''
+        });     
+      }
+    }
+    );
     
   }
 }
